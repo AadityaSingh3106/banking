@@ -8,14 +8,14 @@ declare type SearchParamProps = {
 // ========================================
 
 declare type SignUpParams = {
-  firstName: string;
-  lastName: string;
-  address1: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  dateOfBirth: string;
-  ssn: string;
+  firstName?: string;
+  lastName?: string;
+  address1?: string;
+  city?: string;
+  state?: string;
+  postalCode?: string;
+  dateOfBirth?: string;
+  ssn?: string;
   email: string;
   password: string;
 };
@@ -26,19 +26,18 @@ declare type LoginUser = {
 };
 
 declare type User = {
-  $id: string;
-  email: string;
-  userId: string;
-  dwollaCustomerUrl: string;
-  dwollaCustomerId: string;
-  firstName: string;
-  lastName: string;
-  address1: string;
-  city: string;
-  state: string;
-  postalCode: string;
-  dateOfBirth: string;
-  ssn: string;
+  $id?: string;
+  email?: string;
+  userId?: string;
+  dwollaCustomerUrl?: string;
+  dwollaCustomerId?: string;
+  name?:string
+  address1?: string;
+  city?: string;
+  state?: string;
+  postalCode?: string;
+  dateOfBirth?: string;
+  ssn?: string;
 };
 
 declare type NewUserParams = {
@@ -157,6 +156,7 @@ declare interface HeaderBoxProps {
 
 declare interface MobileNavProps {
   user: User;
+
 }
 
 declare interface PageHeaderProps {
@@ -178,14 +178,14 @@ declare interface PlaidLinkProps {
   dwollaCustomerId?: string;
 }
 
-// declare type User = sdk.Models.Document & {
-//   accountId: string;
-//   email: string;
-//   name: string;
-//   items: string[];
-//   accessToken: string;
-//   image: string;
-// };
+declare type User = sdk.Models.Document & {
+  accountId: string;
+  email: string;
+  name: string;
+  items: string[];
+  accessToken: string;
+  image: string;
+};
 
 declare interface AuthFormProps {
   type: "sign-in" | "sign-up";
@@ -210,6 +210,7 @@ declare interface TotalBalanceBoxProps {
 
 declare interface FooterProps {
   user: User;
+  type:'mobile'|'desktop'
 }
 
 declare interface RightSidebarProps {
