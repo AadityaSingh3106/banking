@@ -16,6 +16,7 @@ import NewFiled from "./NewFiled";
 import SignUp from "@/app/(auth)/sign-up/page";
 import { useRouter } from "next/navigation";
 import { signIn, signUp } from "@/lib/actions/user.actions";
+import PlaidLink from "./PlaidLink";
 
 
 
@@ -51,7 +52,20 @@ const formSchema=authFormSchema(type);
 
 
         if(type==='sign-up'){
-const newUser=await signUp(data);
+
+            const userData={
+                firstName:data.firstName!,
+            lastName:data.lastName!,
+            address1:data.address1!,
+            city:data.city!,
+            state:data.state!,
+            postalCode:data.postalCode!,
+            dateOfBirth:data.dateOfBirth!,
+            ssn:data.ssn!,
+            email:data.email,
+            password:data.password
+            }
+const newUser=await signUp(userData);
 setUser( newUser);
         
         }
@@ -103,10 +117,9 @@ router.push('/')
             </header>
             {user ? (
                 <div className="flex flex-col gap-4">
-                    {/* PlaidLink */}
-
+   <PlaidLink user={user} variant="primary"/>
                 </div>
-            ) : (
+         ) : ( 
                 <>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -154,7 +167,7 @@ router.push('/')
                         </Link>
                     </footer>
                 </>
-            )}
+             )} 
         </section>
     )
 }
